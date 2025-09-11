@@ -51,7 +51,7 @@ DATASET_CONFIGS = {
 os.environ["CUDA_VISIBLE_DEVICES"] = ""
 device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
 # Configuration
-HF_TOKEN = "xx_xxxxxxxxxxxxxxxxxxxxxxxxxxxxxx"
+HF_TOKEN = "hf_xxxxxxxxxxxxxxxxxxxxxx"
 TEST_SPLIT = 0.2
 OUTPUT_DIR = "results/ResultsModels"
 
