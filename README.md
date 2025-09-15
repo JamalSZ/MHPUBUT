@@ -34,31 +34,29 @@ The theoretical bounds are validated across diverse real-world datasets and stat
 - CUDA-compatible GPU (optional, for faster model training)
 - Docker (optional, for containerized execution)
 
-### 📂 Dataset Access
-
-Datasets are automatically downloaded via the **Darts** library as follows:
-
-```python
-from darts.datasets import ETTh1Dataset, EnergyDataset, SunspotsDataset
-
-
 ### Experimental Setup
   - Train-test split: 80:20 with rolling-origin evaluation
   - Forecasting models: DeepAR, NHiTS, PatchTST, Informer, FEDformer
   - Metrics: ε-tolerance predictability (Equation 2 in paper)
   - Hardware: Intel Xeon Silver 4214 (48 cores), 188GB RAM
 
-### Standard Installation
-```bash
+### 📂 Dataset Access, Installation, and Docker Setup
+
+Datasets are automatically downloaded via the **Darts** library.  
+For manual loading, you can use:
+
+```python
+from darts.datasets import ETTh1Dataset, EnergyDataset, SunspotsDataset
+
 # Clone the repository
 git clone https://anonymous.4open.science/r/MHPUBUT-81C3
 cd MHPUBUT-81C3
 
-### Docker
 # Build Docker image
 docker build -t mhpubut .
 
 # Run container
 docker run -it --rm mhpubut
+
 
 
