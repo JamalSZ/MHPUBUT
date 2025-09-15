@@ -34,9 +34,13 @@ The theoretical bounds are validated across diverse real-world datasets and stat
 - CUDA-compatible GPU (optional, for faster model training)
 - Docker (optional, for containerized execution)
 
-### Dataset Access
-Datasets are automatically downloaded via the Darts library. For manual access:
+### 📂 Dataset Access
+
+Datasets are automatically downloaded via the **Darts** library as follows:
+
+```python
 from darts.datasets import ETTh1Dataset, EnergyDataset, SunspotsDataset
+
 
 ### Experimental Setup
   - Train-test split: 80:20 with rolling-origin evaluation
@@ -55,6 +59,6 @@ cd MHPUBUT-81C3
 docker build -t mhpubut .
 
 # Run container
-docker run -it --rm mhpubut ```
+docker run -it --rm mhpubut
 
 
