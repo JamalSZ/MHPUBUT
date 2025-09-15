@@ -1,44 +1,75 @@
-# MHPUBUT
-Multi-horizon Predictability Upper Bound in Univariate Time Series
-# Multi-Horizon Predictability Upper Bound in Univariate Time Series (MHPUBUT)
+# Multi-Horizon Predictability Bounds for Time Series Forecasting
 
-This repository contains the official implementation and experimental pipeline for the paper:
+[![Paper](https://img.shields.io/badge/Paper-AAAI%202026-blue)](https://anonymous.4open.science/r/MHPUBUT-81C3)
+[![Code](https://img.shields.io/badge/Code-Python-green)](https://anonymous.4open.science/r/MHPUBUT-81C3)
+[![License](https://img.shields.io/badge/License-MIT-yellow)](LICENSE)
 
-**Multi-Horizon Predictability Upper Bound in Univariate Time Series**  
-Anonymous submission to AAAI 2025
+This repository contains the official implementation of the paper **"A Mode-Agnostic Multi-Horizon Upper Bound for Univariate Time Series Prediction"** (AAAI 2026). Our work introduces a principled framework for quantifying the fundamental limits of predictability in multi-horizon time series forecasting using information-theoretic and chaos-theoretic approaches.
 
----
+## 📋 Table of Contents
+- [Overview](#overview)
+- [Key Features](#key-features)
+- [Installation](#installation)
+- [Quick Start](#quick-start)
+- [Repository Structure](#repository-structure)
+- [Reproducing Results](#reproducing-results)
+- [Datasets](#datasets)
+- [Experiments](#experiments)
+- [Citation](#citation)
+- [License](#license)
 
-## 📖 Overview
+## 🌟 Overview
 
-This project investigates the **fundamental limits of predictability** in univariate time series.  
-We derive theoretical upper bounds using **entropy-rate estimation** and **Lyapunov exponents**, and validate them with reproducible experiments.
+This work addresses the fundamental challenge of determining the theoretical limits of predictability in multi-horizon time series forecasting. Our framework provides:
 
-Key contributions of the paper:
+1. **Information-theoretic bounds** based on horizon-specific entropy rate estimation
+2. **Chaos-theoretic bounds** using Lyapunov exponents to model predictability decay
+3. **Noise correction mechanisms** for tighter bound estimation
+4. **Model-agnostic benchmarks** applicable to any forecasting approach
 
-- ⚖️ A unified framework connecting **chaotic dynamical systems** and **stochastic processes**.  
-- 📉 Derivation of multi-horizon error growth rates using entropy and Lyapunov theory.  
-- 🔬 Empirical validation across synthetic and real-world datasets.  
-- 🛠️ A reproducible pipeline to compute:
-  - Entropy-rate estimates (`h`) via **Lempel-Ziv compression**  
-  - Predictability ratio (`π₀ = 1 - h / log |X|`)  
-  - Lyapunov spectrum and effective exponents (`λ̂eff`)  
-  - Forecast error propagation over increasing horizons  
+The theoretical bounds are validated across diverse real-world datasets and state-of-the-art forecasting models, demonstrating their utility as absolute benchmarks for forecasting performance.
 
-For complete details, see the paper: [anonymous-submission-latex-2025.pdf](./anonymous-submission-latex-2025.pdf).
+## 🔑 Key Features
 
----
+- **Multi-horizon predictability bounds**: Quantifies fundamental limits across forecast horizons
+- **Dual theoretical approaches**: Combines information theory and deterministic chaos theory
+- **Noise-robust estimation**: Includes variance-based correction mechanisms
+- **Comprehensive validation**: Tested on ETTh1, EnergyConsumption, and Sunspots datasets
+- **Reproducible pipeline**: Complete implementation with Docker support
 
-## 🚀 Getting Started
+## 🚀 Installation
 
 ### Prerequisites
-- [Docker](https://www.docker.com/get-started) installed on your system.
+- Python 3.8+
+- CUDA-compatible GPU (optional, for faster model training)
+- Docker (optional, for containerized execution)
 
-### Build the Docker Image
-Clone the repository and build the image:
-
+### Standard Installation
 ```bash
-git clone <repo-url>
-cd MHPUBUT
+# Clone the repository
+git clone https://anonymous.4open.science/r/MHPUBUT-81C3
+cd MHPUBUT-81C3
+
+# Create virtual environment
+python -m venv venv
+source venv/bin/activate  # On Windows: venv\Scripts\activate
+
+# Install dependencies
+pip install -r requirements.txt
+
+### Docker
+# Build Docker image
 docker build -t mhpubut .
 
+# Run container
+docker run -it --rm mhpubut
+
+### Dataset Access
+Datasets are automatically downloaded via the Darts library. For manual access:
+from darts.datasets import ETTh1Dataset, EnergyDataset, SunspotsDataset
+
+### Experimental Setup
+  - Train-test split: 80:20 with rolling-origin evaluation
+  - Forecasting models: DeepAR, NHiTS, PatchTST, Informer, FEDformer
+  - Metrics: ε-tolerance predictability (Equation 2 in paper)
+  - Hardware: Intel Xeon Silver 4214 (48 cores), 188GB RAM
