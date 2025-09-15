@@ -50,13 +50,6 @@ from darts.datasets import ETTh1Dataset, EnergyDataset, SunspotsDataset
 git clone https://anonymous.4open.science/r/MHPUBUT-81C3
 cd MHPUBUT-81C3
 
-# Create virtual environment
-python -m venv venv
-source venv/bin/activate  # On Windows: venv\Scripts\activate
-
-# Install dependencies
-pip install -r requirements.txt
-
 ### Docker
 # Build Docker image
 docker build -t mhpubut .
