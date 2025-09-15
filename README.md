@@ -62,7 +62,7 @@ pip install -r requirements.txt
 docker build -t mhpubut .
 
 # Run container
-docker run -it --rm mhpubut
+docker run -it --rm mhpubut ```
 
 ### Dataset Access
 Datasets are automatically downloaded via the Darts library. For manual access:
