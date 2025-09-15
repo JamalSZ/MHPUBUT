@@ -6,17 +6,7 @@
 
 This repository contains the official implementation of the paper **"A Mode-Agnostic Multi-Horizon Upper Bound for Univariate Time Series Prediction"** (AAAI 2026). Our work introduces a principled framework for quantifying the fundamental limits of predictability in multi-horizon time series forecasting using information-theoretic and chaos-theoretic approaches.
 
-## 📋 Table of Contents
-- [Overview](#overview)
-- [Key Features](#key-features)
-- [Installation](#installation)
-- [Quick Start](#quick-start)
-- [Repository Structure](#repository-structure)
-- [Reproducing Results](#reproducing-results)
-- [Datasets](#datasets)
-- [Experiments](#experiments)
-- [Citation](#citation)
-- [License](#license)
+
 
 ## 🌟 Overview
 
@@ -44,6 +34,16 @@ The theoretical bounds are validated across diverse real-world datasets and stat
 - CUDA-compatible GPU (optional, for faster model training)
 - Docker (optional, for containerized execution)
 
+### Dataset Access
+Datasets are automatically downloaded via the Darts library. For manual access:
+from darts.datasets import ETTh1Dataset, EnergyDataset, SunspotsDataset
+
+### Experimental Setup
+  - Train-test split: 80:20 with rolling-origin evaluation
+  - Forecasting models: DeepAR, NHiTS, PatchTST, Informer, FEDformer
+  - Metrics: ε-tolerance predictability (Equation 2 in paper)
+  - Hardware: Intel Xeon Silver 4214 (48 cores), 188GB RAM
+
 ### Standard Installation
 ```bash
 # Clone the repository
@@ -64,12 +64,4 @@ docker build -t mhpubut .
 # Run container
 docker run -it --rm mhpubut ```
 
-### Dataset Access
-Datasets are automatically downloaded via the Darts library. For manual access:
-from darts.datasets import ETTh1Dataset, EnergyDataset, SunspotsDataset
 
-### Experimental Setup
-  - Train-test split: 80:20 with rolling-origin evaluation
-  - Forecasting models: DeepAR, NHiTS, PatchTST, Informer, FEDformer
-  - Metrics: ε-tolerance predictability (Equation 2 in paper)
-  - Hardware: Intel Xeon Silver 4214 (48 cores), 188GB RAM
